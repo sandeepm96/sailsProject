@@ -136,7 +136,7 @@ app.controller('AlumniEditFullViewController',['$scope','$http','$routeParams',
 
 app.controller('PeopleEditHomeController',['$scope','$http',function($scope,$http){
 	ensureLoggedIN($http);
-	$http.get("/data/get?form=member&units=-1").success(function(data){
+	$http.get("/member").success(function(data){
 		$scope.members = data;
 		global_settings.file = $scope.members;
 	}).error(function(err){console.log("readErr:"+err)});
