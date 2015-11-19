@@ -1,0 +1,103 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Zairza Admin</title>
+		<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../shared/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/shared/async/bar.css">
+		<link rel="stylesheet" type="text/css" href="css/main.css">
+	</head>
+	<body>
+	<div> 
+		<nav class="navbar navbar-default" id="topNavbar">
+			<div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+   				<div>
+   					<a class="navbar-brand" href="#"><h2><strong>Zairza</strong>&nbsp;Admin Window</h2></a>
+            <a class="navbar-brand" href="/" id="home"><h2><span class="glyphicon glyphicon-home" aria-hidden="true"></span></h2></a>
+   				</div>
+    <!-- Collect the nav links, forms, and other content for toggling -->
+   				<div class="collapse navbar-collapse" id="navbarTop">
+     			</div><!-- /.navbar-collapse -->
+  			</div><!-- /.container-fluid -->
+		</nav>
+
+		
+		<div class="container-fluid">
+			<div class="row">
+				<!-- main sidebar -->
+				<div class="col-lg-2" id="mainSideBar">
+					<ul class="nav nav-pills nav-stacked">
+						<li role="presentation"></li>
+  						<li role="presentation"><a href="./#/profile/">Profile</a></li>
+  						<li role="presentation" class="dropdown">
+    						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+      							Announcements
+    						</a>
+    						<ul class="dropdown-menu" id="dropdown">
+      							<li><a href="./#/announcement/">Add new</a></li>
+      							<li><a href="./#/announcement_edit/">Modify </a></li>
+      						</ul>
+  						</li>
+  						<li role="presentation" class="dropdown">
+    						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+      							Member
+    						</a>
+    						<ul class="dropdown-menu" id="dropdown">
+      							<li><a href="./#/member/">Add new</a></li>
+      							<li><a href="./#/PeopleEditFullView/">Modify </a></li>
+      						</ul>
+  						</li>
+  						<li role="presentation" class="dropdown">
+    						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+      							Alumni
+    						</a>
+    						<ul class="dropdown-menu" id="dropdown">
+      							<li><a href="./#/alumni/">Add new</a></li>
+      							<li><a href="./#/AlumniEditFullView/">Modify </a></li>
+      						</ul>
+  						</li>
+  						<li role="presentation" class="dropdown">
+    						<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+      							Blogs
+    						</a>
+    						<ul class="dropdown-menu" id="dropdown">
+      							<li><a href="./#/blogs/">Add new</a></li>
+      							<li><a href="./#/blogs_edit/">Modify </a></li>
+      						</ul>
+  						</li>
+              <li role="presentation" class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true">
+                    Newsletter
+                </a>
+                <ul class="dropdown-menu" id="dropdown">
+                    <li><a href="./#/newsletter/">Add new</a></li>
+                    <li><a href="./#/NewsEditFullView/">Modify </a></li>
+                </ul>
+              </li>
+  						<li role="presentation"><a href="./#/upload/">Upload File</a></li>
+              <li role="presentation"><a href="./#/image/">Carousels</a></li>
+  						<li role="presentation"><a href="/admin/mongodb">View Database</a></li>
+					</ul>
+				</div>
+				<!-- main Area for display -->
+				<div class="col-lg-10" ng-app='MyAPP' >
+					<div id="form_window">
+						<div ng-view> </div>
+					</div>
+				</div>
+			</div> 	
+		</div> 
+	</div>
+
+	<script type="text/javascript" src="/shared/js/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="/shared/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/shared/js/angular.min.js"></script>	
+	<script type="text/javascript" src="/shared/js/angular-route.min.js"></script>
+  <script type="text/javascript" src="/shared/js/angular-animate.min.js"></script>
+  <script type="text/javascript" src="/shared/async/bar.js"></script>
+	<script type="text/javascript" src="js/script.js"></script> 	
+	<script type="text/javascript" src="js/ngApp.js"></script> 		
+ 	</body>
+</html>

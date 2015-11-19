@@ -1,0 +1,63 @@
+<h4>Select an entry to edit</h4>
+<form method="post" action="/newsletter" name="upload" >
+	<input type="text" class="form-control" name="issue"  placeholder="issue no. eg- June 2015"><br>
+	<input type="text" class="form-control" id="link" name="img" placeholder="link to Profile Picture">
+
+	<a class = "btn btn-primary"  data-toggle="modal" data-target="#uploadPicture" style="margin-top:5px">Upload a photo instead </a>
+
+	<hr>
+    <button type="submit" class="btn btn-success btn-block" >Submit </button>
+</form>
+
+<!-- Image upload Model -->
+<div class="modal fade" id="uploadPicture" tabindex="-1" role="dialog" aria-labelledby="UploadPicture">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Upload New Picture to database</h4>
+      </div>
+      <div class="modal-body">
+				<form id="imageForm">
+					<input type="file" onchange="previewFile()" name="raw" class="btn"><br>
+					<img id="preview" src="" height="200" alt="Image preview...">
+					<input type="text" id="base64" name="base64" hidden="true" value="">
+					<input type="button" onclick="SubmitImageForm()" value="Send to Server" class="btn">
+				</form>
+			</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script >
+
+function previewFile() {
+	var preview = document.getElementById("preview");
+	var file    = document.querySelector('input[type=file]').files[0];
+	var b64     = document.getElementById("base64");
+	var reader  = new FileReader();
+
+	reader.onloadend = function () {
+		preview.src = reader.result;
+		b64.value = reader.result;
+	}
+
+	if (file) {
+		reader.readAsDataURL(file);
+	} else {
+		preview.src = "";
+	}
+};
+function SubmitImageForm (){
+            $.ajax({
+                url:'/imageStore',
+                type:'post',
+                data:$('#imageForm').serialize(),
+                success:function(data){
+										$("#uploadPicture").modal("toggle");
+										$("#link").val(data.id);
+                }
+            });
+					}
+</script>

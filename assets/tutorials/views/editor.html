@@ -1,0 +1,70 @@
+    <!--bar starts-->
+    <div class="container-fluid" id="topbar" >
+        <div class="row" id="statusBar">
+            <div class="col-md-12 col-lg-10 col-lg-offset-1">
+                <div id="statusText" class="barText">
+                File id: #<span id='fileId'></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                Editing as: <span id='permission'>{{user.name}}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <div class="dropdown">
+                    <span class="barText dropdown-toggle" type="button" id="targetMenu" 
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                        Category:&nbsp;<span id='selectedTarget'>none</span><span class="caret"></span>
+                    </span>
+                    <ul class="dropdown-menu" aria-labelledby="targetMenu">
+                        <li class="dropdown-header">Robotics</li>
+                        <li class="dept" id='1'>Manual</li>
+                        <li class="dept" id='2'>Electronics</li>
+                        <li class="dept" id='3'>Avr</li>
+                        <li class="dept" id='4'>Arduino</li>
+                        <li class="dept" id='5'>Miscellaneous</li>
+                        <li class="dropdown-header">Software</li>
+                        <li class="dept" id='6'>Web Development</li>
+                        <li class="dept" id='7'>Languages</li>
+                        <li class="dept" id='8'>Standalone Apps</li>
+                        <li class="dept" id='9'>Everything Else</li>
+                        <li class="dropdown-header">Automobile</li>
+                        <li class="dept" id='10'>SAE</li>
+                        <li class="dept" id='11'>ASME</li>                        
+                        <li class="dept" id='12'>Miscellaneous</li>
+                    </ul>
+                </div>
+                </div>
+                <a id="uploadToServer"><span class="glyphicon glyphicon-cloud-upload">&nbsp;Publish</span></a>
+            </div>
+        </div>
+        <div class="row" id="warningBar" >
+            <div class="col-md-12 col-lg-10 col-lg-offset-1">
+                <span id="warningText" class="barText">
+                [Warning] HTML tags are not supported under edit mode, they will be treated as plain text.</span>
+                <span class="glyphicon glyphicon-remove frclose"></span>
+            </div>
+        </div>
+        <div class="row" id="suggestionBar">
+            <div class="col-md-12 col-lg-10 col-lg-offset-1">
+                <span id="suggestionText" class="barText">[suggestion] To mark a section important, use DIV with class 'anchorthis' and id(single word only) describing it , they will be used in view as side navigation</span>
+                <span class="glyphicon glyphicon-remove frclose"></span>
+            </div>
+        </div>
+    </div>
+    <!--bar Ends-->
+    <!--Main Edit page starts-->
+    <div id="main" class="container-fluid">
+        <div class="row">
+            <div class="col-lg-8 col-md-12 col-lg-offset-2 AR">
+                <!--Editor title-->
+                <div class="edit" id="Title" ><h3>Title</h3></div>
+                <br />
+                <!-- Tags -->
+                <textarea class="edit" id="Tags" contenteditable="true" placeholder='Tags, separated by comma [no spaces allowed]'></textarea>
+                <br />
+                <!--Contributers-->
+                <div class="edit" id="Contrib"><h4><em>contributers<em></h4></div>
+                <br />
+                <!--Main Article-->
+                <div class="edit"  id="mainBody"><p>This is main body of your article</p></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="ckeditor/ckeditor.js"></script>
+    <script src="ckeditor/adapters/jquery.js"></script>
