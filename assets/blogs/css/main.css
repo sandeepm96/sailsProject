@@ -7,7 +7,7 @@
 	margin-bottom: 5%;
 }
 .card{
-	background: #e6e6e6; 
+	background: #e6e6e6;
 	box-shadow: 0 2px 5px rgba(0,0,0,0.75);
 	padding: 20px;
 	height : 100px;
@@ -20,11 +20,11 @@
 	color: #3d4246;
 }
 
-a:hover { 
-	text-decoration: none; 
-} 
+a:hover {
+	text-decoration: none;
+}
 .from {
 	font-size: 16px;
-	margin-right: 5%;  
-	 
+	margin-right: 5%;
+
 }

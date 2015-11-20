@@ -1,0 +1,11 @@
+<link rel="stylesheet" type="text/css" href="css/blogedit.css">
+<div class="row">
+  <a ng-repeat="blog in members" ng-href="/admin/#/BlogEditFullView/{{$index}}">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4 " style='margin-bottom: 2%;' >
+      <div class="card">
+          <span class="from">Author:{{ blog.author }}</span><br>
+          <span>Topic:{{ blog.title }}</span>
+        </div>
+      </div>
+    </a>
+</div>

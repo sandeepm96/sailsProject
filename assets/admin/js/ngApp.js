@@ -61,6 +61,23 @@ app.config(['$routeProvider', function ($routeProvider) {
 		{controller: 'PeopleEditFullViewController',
 		templateUrl: 'views/PeopleEditFullview.html'})
 
+		//announcement edit
+		.when('/AnnouncementEditFullView',
+	    {controller: "AnnouncementEditHomeController",
+		   templateUrl: "views/AnnouncementEditHome.html"})
+		.when('/AnnouncementEditFullView/:id',
+        {controller: "AnnouncementEditFullViewController",
+			   templateUrl: "views/AnnouncementEditFullView.html"})
+
+				 .when('/BlogEditFullView',
+		 	    {controller: "BlogEditHomeController",
+		 		   templateUrl: "views/BlogEditHome.html"})
+		 		.when('/BlogEditFullView/:id',
+		         {controller: "BlogEditFullViewController",
+		 			   templateUrl: "views/BlogEditFullView.html"})
+
+
+
 	//newsletter
 	.when('/newsletter',{
 		controller: "newsletter",
@@ -109,7 +126,7 @@ app.controller("member",["$scope","$http",function($scope,$http){
 
 app.controller('AlumniEditHomeController',['$scope','$http',function($scope,$http){
 	ensureLoggedIN($http);
-	$http.get("/data/get?form=alumni&units=-1").success(function(data){
+	$http.get("/alumni").success(function(data){
 		$scope.members = data;
 		global_settings.file = $scope.members;
 	}).error(function(err){console.log("readErr:"+err)});
@@ -119,8 +136,9 @@ app.controller('AlumniEditFullViewController',['$scope','$http','$routeParams',
 	function($scope,$http,$routeParams){
 		ensureLoggedIN($http);
 	showMember = function(member){
-		document.getElementsByName("alumni_update_main")[0].action = "/data/replace?form=alumni&id="+member._id ;
-		document.getElementsByName("alumni_update_delete_entry")[0].action = "/data/delete?form=alumni&id="+member._id ;
+		console.log(member);
+		document.getElementsByName("alumni_update_main")[0].action = "/alumni/"+member.id ;
+		document.getElementsByName("alumni_update_delete_entry")[0].action = "/alumni/destroy/"+member.id ;
 		document.getElementsByName('name')[0].value = member.name;
 		document.getElementsByName('year')[0].value = member.year;
 		document.getElementsByName('wentTo')[0].value = member.wentTo;
@@ -146,8 +164,8 @@ app.controller('PeopleEditFullViewController',['$scope','$http','$routeParams',
 	function($scope,$http,$routeParams){
 		ensureLoggedIN($http);
 	showMember = function(member){
-		document.getElementsByName("people_update_main")[0].action = "/data/replace?form=member&id="+member._id ;
-		document.getElementsByName("people_update_delete_entry")[0].action = "/data/delete?form=member&id="+member._id ;
+		document.getElementsByName("people_update_main")[0].action = "/member/"+member.id ;
+		document.getElementsByName("people_update_delete_entry")[0].action = "/member/destroy/"+member.id ;
 		document.getElementsByName('name')[0].value = member.name;
 		document.getElementsByName('link')[0].value = member.link;
 		document.getElementsByName('img')[0].value = member.img;
@@ -177,6 +195,54 @@ app.controller('NewsEditFullViewController',['$scope','$http','$routeParams',
 		document.getElementsByName("news_update_delete_entry")[0].action = "/data/delete?form=newsletter&id="+member._id ;
 		document.getElementsByName('issue')[0].value = member.issue;
 		document.getElementsByName('img')[0].value = member.img;
+	}
+	if (!global_settings.file) {alert("Nothing to change! \nGo back and select something")}
+	else showMember(global_settings.file[$routeParams.id]);
+
+}]);
+
+app.controller('AnnouncementEditHomeController',['$scope','$http',function($scope,$http){
+	ensureLoggedIN($http);
+	$http.get("/announcement").success(function(data){
+		$scope.members = data;
+		global_settings.file = $scope.members;
+	}).error(function(err){console.log("readErr:"+err)});
+}]);
+
+app.controller('AnnouncementEditFullViewController',['$scope','$http','$routeParams',
+	function($scope,$http,$routeParams){
+		ensureLoggedIN($http);
+	showMember = function(member){
+		document.getElementsByName("announcement_update_main")[0].action = "/announcement/"+member.id ;
+		document.getElementsByName("announcement_update_delete_entry")[0].action = "/announcement/destroy/"+member.id ;
+		document.getElementsByName('from')[0].value = member.from;
+		document.getElementsByName('datetime')[0].value = member.datetime;
+		document.getElementsByName('img')[0].value = member.img;
+		document.getElementsByName('title')[0].value = member.title;
+		document.getElementsByName('body')[0].value = member.body;
+	}
+	if (!global_settings.file) {alert("Nothing to change! \nGo back and select something")}
+	else showMember(global_settings.file[$routeParams.id]);
+
+}]);
+app.controller('BlogEditHomeController',['$scope','$http',function($scope,$http){
+	ensureLoggedIN($http);
+	$http.get("/blog").success(function(data){
+		$scope.members = data;
+		global_settings.file = $scope.members;
+	}).error(function(err){console.log("readErr:"+err)});
+}]);
+
+app.controller('BlogEditFullViewController',['$scope','$http','$routeParams',
+	function($scope,$http,$routeParams){
+		ensureLoggedIN($http);
+	showMember = function(member){
+		document.getElementsByName("blog_update_main")[0].action = "/blog/"+member.id ;
+		document.getElementsByName("blog_update_delete_entry")[0].action = "/blog/destroy/"+member.id ;
+		document.getElementsByName('author')[0].value = member.author;
+		document.getElementsByName('title')[0].value = member.title;
+		document.getElementsByName('img')[0].value = member.img;
+		document.getElementsByName('link')[0].value = member.link;
 	}
 	if (!global_settings.file) {alert("Nothing to change! \nGo back and select something")}
 	else showMember(global_settings.file[$routeParams.id]);
