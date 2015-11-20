@@ -22,6 +22,6 @@
 
 module.exports.routes = {
 
-	"/imageStore/getDataUri/:id" : "imageStore.getDataUri"
+	"/imageStore/getImage/:id" : "imageStore.getImage"
 
 };
